@@ -1,0 +1,67 @@
+//
+//  GoodStore.m
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-21.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import "GoodStore.h"
+
+@implementation GoodStore
+//good_name  shop_name dis_price favorite_number
+//width height  first_img  avatar user_name concerned_number good_id
+
+// lng lat shop_address created
+
+// shop_img
+- (void)dealloc {
+    self.width = nil;
+    self.height = nil;
+    self.firstImg = nil;
+    self.goodName = nil;
+    self.shopName = nil;
+    self.userName = nil;
+    self.disPrice = nil;
+    self.favoriteNumber = nil;
+    self.avatar = nil;
+    self.userName = nil;
+    self.concernedNumber = nil;
+    self.goodId = nil;
+    
+    self.lng = nil;
+    self.lat = nil;
+    self.shopAddress = nil;
+    self.created = nil;
+    
+    self.shopImgs = nil;
+    [super dealloc];
+}
+
+- (id)initWhithDictionary:(NSDictionary *)dict
+{
+    if (self=[super init]) {
+        self.width = [dict objectForKey:@"width"];
+        self.height = [dict objectForKey:@"height"];
+        self.firstImg = [dict objectForKey:@"first_img"];
+        self.goodName = [dict objectForKey:@"good_name"];
+        self.shopName = [dict objectForKey:@"shop_name"];
+        self.disPrice = [dict objectForKey:@"dis_price"];
+        self.favoriteNumber = [dict objectForKey:@"favorite_number"];
+        self.avatar = [dict objectForKey:@"avatar"];
+        self.userName = [dict objectForKey:@"user_name"];
+        self.concernedNumber = [dict objectForKey:@"concerned_number"];
+        self.goodId = [dict objectForKey:@"good_id"];
+        self.shopId = [dict objectForKey:@"shop_id"];
+        
+//        self.lng = dict[@"lng"];
+//        self.lat = dict[@"lat"];
+//        self.shopAddress = dict[@"shop_address"];
+//        self.created = dict[@"created"];
+//        
+//        self.shopImgs = dict[@"shop_img"];
+    }
+    return self;
+}
+
+@end

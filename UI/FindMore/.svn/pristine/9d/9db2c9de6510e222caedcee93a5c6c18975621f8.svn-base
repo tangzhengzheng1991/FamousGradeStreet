@@ -1,0 +1,115 @@
+//
+//  MenuSingleTableView.m
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-19.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import "MenuSingleTableView.h"
+#import "NextOneViewController.h"
+#import "FindSingleCell.h"
+
+@interface MenuSingleTableView ()
+
+@end
+
+@implementation MenuSingleTableView
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+//        for (GoodStore *good in _singleArray) {
+//            float height = [good.height floatValue];
+//            float width = [good.width floatValue];
+//            height= height*310/width;
+//            width=310.0;
+//            
+//            good.height=[NSString stringWithFormat:@"%f",height];
+//            good.width=[NSString stringWithFormat:@"%f",width];
+//            NSLog(@"gooog---%f",[good.width floatValue]);
+//        
+//        }
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self.tableView registerClass:[FindSingleCell class] forCellReuseIdentifier:@"cell"];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.singleArray.count;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    FindSingleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    GoodStore *good = [self.singleArray objectAtIndex:indexPath.row];
+    cell.good = good;
+    
+    cell.picBtn.tag = indexPath.row;
+    [cell.picBtn addTarget:self action:@selector(picBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+
+    cell.backgroundColor = RGBA(219, 219, 219, 1);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    
+    return cell;
+}
+
+- (void)picBtnClick:(UIButton *)btn
+{
+    [self goNextOneWithIndex:btn.tag];
+}
+
+- (void)goNextOneWithIndex:(int)index
+{
+    GoodStore *good = [self.singleArray objectAtIndex:index];
+    NSLog(@"goodId-->%@",good.goodId);
+    NextOneViewController *nextOne = [[NextOneViewController alloc] init];
+    if (_isMain) {
+        
+        [HTTPRequestEnding findMainDoubleRequestWithGoodid:good.goodId completion:^(NSDictionary *dict) {
+            nextOne.good = good;
+            nextOne.dictNext = dict;
+//            NSLog(@"---nextOne--->%@",dict);
+            [self.navigationController pushViewController:nextOne animated:YES];
+        }];
+    }else {
+        [HTTPRequestEnding findOtherDoubleRequestWithGoodid:good.goodId completion:^(NSDictionary *dict) {
+            nextOne.good = good;
+            nextOne.dictNext = dict;
+            [self.navigationController pushViewController:nextOne animated:YES];
+        }];
+    }
+}
+
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [self goNextOneWithIndex:indexPath.row];
+}
+
+- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GoodStore *good = [self.singleArray objectAtIndex:indexPath.row];
+    float height = ([good.height floatValue]/[good.width floatValue])*310.0;
+    return height+110;
+}
+
+
+@end

@@ -1,0 +1,240 @@
+//
+//  NextOneViewController.m
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-21.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import "NextOneViewController.h"
+
+@interface NextOneViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+{
+    UIImageView *_imageBG;
+    UITableView *_tableView;
+}
+
+@property (nonatomic, retain)NSArray *arrayself;
+
+@end
+
+@implementation NextOneViewController
+
+- (void)dealloc
+{
+    self.good = nil;
+    self.dictNext = nil;
+    [super dealloc];
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        NSLog(@"init");
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    NSLog(@"viewdidload");
+    
+    self.view.backgroundColor = RGBA(219, 219, 219, 1);
+    
+    _imageBG = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 350)];
+    [_imageBG setImageWithURL:[NSURL URLWithString:self.good.firstImg]];
+    [self.view addSubview:_imageBG];
+    
+    // self.view.bounds.size.height
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.tableHeaderView = [self ceateTableHead];
+    [self.view addSubview:_tableView];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 30, 50, 30);
+    [backBtn setBackgroundImage:[UIImage imageNamed:@"backIconImage"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backBtn];
+}
+
+#pragma mark - Creat TableHeader
+
+- (UIView *)ceateTableHead
+{
+    UIView *viewHH = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 400)];
+    viewHH.backgroundColor = [UIColor clearColor];
+    
+    // 50 60 60 10 30
+    UIView *viewHead = [[UIView alloc] initWithFrame:CGRectMake(0, 185, 320, 215)];
+    viewHead.backgroundColor = RGBA(239, 239, 239, 1);
+    [viewHH addSubview:viewHead];
+    
+    UIView *view1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    view1.backgroundColor = [UIColor whiteColor];
+    [viewHead addSubview:view1];
+    [view1 release];
+    
+    UIView *viewline2 = [[UIView alloc] initWithFrame:CGRectMake(0, 110, 320, 1)];
+    viewline2.backgroundColor = RGBA(228, 228, 228, 1);
+    [viewHead addSubview:viewline2];
+    [viewline2 release];
+    
+    UIView *viewline3 = [[UIView alloc] initWithFrame:CGRectMake(0, 170, 320, 1)];
+    viewline3.backgroundColor = RGBA(228, 228, 228, 1);
+    [viewHead addSubview:viewline3];
+    [viewline3 release];
+    
+    UIImageView *headImg = [[UIImageView alloc] initWithFrame:CGRectMake(10, -20, 50, 50)];
+    headImg.layer.cornerRadius = 25;
+    headImg.clipsToBounds = YES;
+    [headImg setImageWithURL:[NSURL URLWithString:self.good.avatar] placeholderImage:[UIImage imageNamed:@"userHeaderDefault"]];
+    [viewHead addSubview:headImg];
+    [headImg release];
+    
+    // 用户名
+    UILabel *userL = [[UILabel alloc] initWithFrame:CGRectMake(70, 10, 100, 20)];
+    userL.text = self.good.userName;
+    userL.adjustsFontSizeToFitWidth = YES;
+    userL.textColor = [UIColor redColor];
+    [viewHead addSubview:userL];
+    [userL release];
+    
+    UIImageView *fovaImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"marketFavNumIcon"]];
+    fovaImg.frame = CGRectMake(190, 20, 20, 20);
+    [viewHead addSubview:fovaImg];
+    [fovaImg release];
+    
+    UILabel *favL = [[UILabel alloc] initWithFrame:CGRectMake(212, 20, 10, 20)];
+    favL.text = self.good.favoriteNumber;
+    [viewHead addSubview:favL];
+    [favL release];
+    
+    UIImageView *colImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favIconCowry"]];
+    colImg.frame = CGRectMake(260, 20, 20, 20);
+    [viewHead addSubview:colImg];
+    [colImg release];
+    
+    UILabel *colL = [[UILabel alloc] initWithFrame:CGRectMake(282, 20, 10, 20)];
+    colL.text = self.good.concernedNumber;
+    [viewHead addSubview:colL];
+    [colL release];
+    
+    UILabel *goodNL = [[UILabel alloc] initWithFrame:CGRectMake(10 , 60, 160, 20)];
+    goodNL.text = self.good.goodName;
+    goodNL.adjustsFontSizeToFitWidth = YES;
+    [viewHead addSubview:goodNL];
+    [goodNL release];
+    
+    //时间
+    UILabel *timeL = [[UILabel alloc] initWithFrame:CGRectMake(10 , 80, 90, 20)];
+    timeL.text = _dictNext[@"created"];
+    timeL.textColor = RGBA(145, 145, 145, 1);
+    timeL.font = [UIFont systemFontOfSize:15];
+    [viewHead addSubview:timeL];
+    [timeL release];
+    
+    // 价格
+    UILabel *moneyL = [[UILabel alloc] initWithFrame:CGRectMake(180, 65, 70, 30)];
+    moneyL.text = [NSString stringWithFormat:@"¥  %d",[self.good.disPrice intValue]];
+    moneyL.font = [UIFont italicSystemFontOfSize:20];
+    moneyL.textColor = [UIColor redColor];
+    [viewHead addSubview:moneyL];
+    [moneyL release];
+    
+    
+    UIImageView *firmImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"conFirmIconmiddle"]];
+    firmImg.frame = CGRectMake(15, 125, 31, 29);
+    [viewHead addSubview:firmImg];
+    [firmImg release];
+    
+    UILabel *litL = [[UILabel alloc] initWithFrame:CGRectMake(41, 135, 40, 17)];
+    litL.text = @"onfirm";
+    litL.textColor = RGBA(145, 145, 145, 1);
+    litL.adjustsFontSizeToFitWidth = YES;
+    [viewHead addSubview:litL];
+    [litL release];
+    
+    // 商店地址
+    UIButton *addrBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addrBtn.frame = CGRectMake(175, 120, 130, 20);
+    [addrBtn setTitle:_dictNext[@"shop_address"] forState:UIControlStateNormal];
+    addrBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
+    [addrBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [viewHead addSubview:addrBtn];
+    
+    // 地标图
+    UIImageView *addrImg = [[UIImageView alloc] initWithFrame:CGRectMake(160, 120, 15, 20)];
+    addrImg.image = [UIImage imageNamed:@"marketDistanceIcon"];
+    [viewHead addSubview:addrImg];
+    [addrImg release];
+    
+    // 卖场
+    UIButton *aveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    aveBtn.frame = CGRectMake(0, 180, 320, 35);
+    aveBtn.backgroundColor = RGBA(83, 83, 83, 1);
+    [aveBtn setTitle:self.good.shopName forState:UIControlStateNormal];
+    [viewHead addSubview:aveBtn];
+    
+    UIImageView *arrowImg = [[UIImageView alloc] initWithFrame:CGRectMake(290, 7, 11, 20)];
+    arrowImg.image = [UIImage imageNamed:@"PageArrowIcon"];
+    [aveBtn addSubview:arrowImg];
+    [arrowImg release];
+    
+    return [viewHH autorelease];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - ScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat yOffset = scrollView.contentOffset.y;
+    CGRect rect = _imageBG.frame;
+    if (yOffset < 0) {
+        
+        rect.origin.y = ABS(yOffset)/8;
+        rect.size.height = ABS(yOffset)/5+350;
+    }else {
+        rect.origin.y = -ABS(yOffset)/5;
+        rect.size.height = 350-ABS(yOffset)/5;
+    }
+    _imageBG.frame = rect;
+}
+
+#pragma mark - TableViewDelegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+    }
+    return cell;
+}
+
+- (void)backBtnClick
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
+
+
+@end

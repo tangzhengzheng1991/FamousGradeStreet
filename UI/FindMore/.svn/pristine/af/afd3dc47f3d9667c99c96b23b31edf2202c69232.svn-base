@@ -1,0 +1,36 @@
+//
+//  detailCell.m
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-22.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import "detailCell.h"
+
+@implementation detailCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+//        UIImageView *image = [UIImageView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>);
+        
+    }
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+@end

@@ -1,0 +1,76 @@
+//
+//  NextOneViewController.h
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-21.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface NextOneViewController : UIViewController
+
+@property (nonatomic, retain)GoodStore *good;
+//@property (nonatomic, retain)NSArray *arrayNext;
+@property (nonatomic, retain)NSDictionary *dictNext;
+
+@end
+
+
+/*
+ 
+ 首页
+ "result": [
+ {
+ "come_from_id": "12728",
+ "good_id": "12728",
+ "good_name": "迪士尼男童鞋",
+ "shop_id": "3048",
+ "shop_name": "巴黎春天五角场店特卖场",
+ "user_id": "3107",
+ "user_name": "筱雅",
+ "org_price": "0.00",
+ "dis_price": "96.00",
+ "concerned_number": "0",
+ "favorite_number": "0",
+ "is_auth": "0",
+ "first_img": "http://img5.mplife.com/buy/good/640/2014/11/21/1416538180843573402.jpg",
+ "width": 276,
+ "height": 356,
+ "img_num": "1",
+ "avatar": "http://img3.mpimg.cn/avatars/upload/2014/4/3/f7512a2f-0eed-4147-a04e-010970c3fc42.jpg"
+ }
+ 
+ store": [
+ {
+ "id": 19,
+ "name": "配饰"
+ }
+ 
+ 其他
+ "result": [
+ {
+ "good_id": "11997",
+ "good_name": "ENZO 钻戒",
+ "shop_id": "3034",
+ "shop_name": "ENZO巴春五角场店",
+ "user_id": "1",
+ "user_name": "leofan05",
+ "org_price": "8099.00",
+ "dis_price": "4500.00",
+ "concerned_number": "0",
+ "favorite_number": "2",
+ "is_auth": "0",
+ "first_img": "http://img5.mplife.com/buy/good/640/2014/10/29/1414548499703464098.jpg",
+ "width": 352,
+ "height": 480,
+ "img_num": "1",
+ "avatar": "http://img3.mpimg.cn/avatars/upload/2014/4/9/bdd76e02-6aa8-43e4-b225-e9a5aedb3c5b.jpg"
+ },
+ 
+ 
+ post:
+ http://buy.mplife.com/api/goods/good-detail/gid/12728
+ uuid=&uname=&page=1&pagesize=20
+ 
+ */

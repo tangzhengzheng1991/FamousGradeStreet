@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rules>   
+    <rule type="mobile" pattern="^\d{1,15}$" tip="手机号由1-15位数字组成" />
+    <rule type="loginName" pattern="^[\w_]{6,20}$" tip="用户名长度为6-20位由数字、字母、下划线组成" />
+    <rule type="password" pattern="^[\s\S]{6,20}$" tip="手机银行密码格式有误，请重新输入" />
+    <rule type="oldpassword" pattern="^[\s\S]{6,20}$" tip="旧密码格式有误" />
+    <rule type="newpassword" pattern="^[\s\S]{8,20}$" tip="新密码格式有误，请重新输入" />
+    <rule type="email" pattern="^(?=\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$).{6,40}$" tip="电子邮箱长度为6-40位（格式如：XX@X.X）" />
+    <rule type="address" pattern="^[\S]{0,60}$" tip="地址最长60个字符" />
+    <rule type="riskAddress" pattern="^[\S]{0,150}$" tip="地址最长150个字符" />
+    <rule type="phone" pattern="^(\(\d{3,4}\)|\d{3,4}-|\d{3,4}|\s)?\d{7,8}(\-\d{2,4})?$" tip="电话最长20位由数字、横线、空格、左右括号组成，不能含有中英文或特殊字符" />
+    <rule type="validateCode" pattern="^[0-9a-zA-Z]{4}$" tip="图形验证码格式有误" />
+    
+    <rule type="TBPassword" pattern="^[\s\S]{6}$" tip="电话银行密码由6位数字组成" />
+    <rule type="smc" pattern="^\d{6}$" tip="手机交易码由6位数字组成" />
+    <rule type="loginName" pattern="^\W{6,20}$" tip="用户名长度为6-20位由数字、字母、下划线组成" />
+    <rule type="mvc" pattern="^\d{6}$" tip="手机验证码由6位数字组成" />
+    <rule type="otp" pattern="^[\s\S]{6}$" tip="动态口令由6位数字组成" />
+    <rule type="cmc" pattern="^[\s\S]{6}$" tip="手机确认码由6位数字组成" />
+    <rule type="postcode" pattern="^\d{6}$" tip="邮编由6位数字组成" />
+    
+    <rule type="cardNumber" pattern="^\d{15,19}$" tip="银行卡号由15-19位数字组成" />
+    <rule type="relatedAccount" pattern="^\d{12,17}$|\d{19}$" tip="待关联账号由12-17或19位数字组成" />
+    
+    <rule type="IDCard" pattern="^\d+$" tip="证件号码不能包含特殊符号" />
+    <rule type="eCashAccout" pattern="^\d+$" tip="电子现金账户不能为空" />
+    
+    <rule type="payeeName" pattern="^[\S]{0,60}$" tip="收款人姓名最长为60个字符或30个中文字符" />
+    <rule type="payeeBank" pattern="^[\S]{1,60}" tip="开户行名称不能为空" />
+    <rule type="payee" pattern="^\d{12,17}$|\d{19}$" tip="收款人账户由12-17或19位数字组成" />
+    <rule type="marginAccout" pattern="^\d{0,30}$" tip="保证金账号最长30位数字" />
+    <rule type="marginPassword" pattern="^\d{6}$" tip="保证金密码由6位数字组成" />
+    
+    <rule type="tranAmount" pattern="(?!^0*(\.0{1,2})?$)^\d{1,11}(\.\d{1,2})?$" tip="转账金额最大14位（小数点前最多11位数字、小数点后最多2位数字）由大于0的数据组成" />
+    
+    <rule type="repaymentAmount" pattern="(?!^0*(\.0{1,2})?$)^\d{1,11}(\.\d{1,2})?$" tip="还款金额最大14位（小数点前最多11位数字、小数点后最多2位数字）由大于0的数据组成" />
+    <rule type="repaymentRate" pattern="(?!^0*(\.0{1,4})?$)^\d{1,5}(\.\d{1,4})?$" tip="利率由最大为10位（最多到小数点后四位，日元最多到小数点后两位）的大于0数据组成" />
+    
+    <rule type="selfMaxLimit" pattern="(?!^0*(\.0{1,2})?$)^\d{1,11}(\.\d{1,2})?$" tip="自设每日累计限额最大14位（小数点前最多11位数字、小数点后最多2位数字）由大于0的数据组成" />
+    
+    <rule type="transactionAmount" pattern="(?!^0*(\.0{1,2})?$)^\d{1,11}(\.\d{1,2})?$" tip="交易金额最大14位（小数点前最多11位数字、小数点后最多2位数字）由大于0的数据组成" />
+    <rule type="boundAmount" pattern="^[1-9]+[0-9]*[0]+[0]+$" tip="交易面额由100的整数倍的大于0数字组成" />
+    <rule type="rate" pattern="(?!^0*(\.0{1,4})?$)^\d{1,5}(\.\d{1,4})?$" tip="汇率由最大为10位（最多到小数点后四位，日元最多到小数点后两位）的大于0数据组成" />
+    
+    <rule type="bondAmount1" pattern="^([1-9]|[\d]+[0-9])(\.\d)?$" tip="买卖数量由不小于1（小数点后最多一位小数）的数据组成" />
+    <rule type="bondAmount5" pattern="^([5-9]|[\d]+[0-9])(\.\d)?$" tip="买卖数量由不小于5（小数点后最多一位小数）的数据组成" />
+    <rule type="bondAmount10" pattern="^[1-9]+[0-9]+$" tip="买卖数量由不小于10的整数组成" />
+    <rule type="bondAmount100" pattern="^[1-9]+[0-9]+[0-9]+$" tip="买卖数量由不小于100的整数组成" />
+    
+    <rule type="price" pattern="(?!^0*(\.0{1,2})?$)^\d{1,11}(\.\d{1,2})?$" tip="价格最大14位（小数点前最多11位数字、小数点后最多2位数字）由大于0的数据组成" />
+    <rule type="redeemShare" pattern="(?!^0*$)^\d{1,14}$|^[0-9]{1,2}(,[0-9]{3}){0,4}$|^[0-9]{1,3}(,[0-9]{3}){0,3}$" tip="赎回份额最大14位（不带小数）由大于0的数据组成" />
+    <rule type="nickname" pattern="^\S{0,20}$" tip="账户别名最长20个字符或10个中文字符" />
+    
+    <rule type="yanBoundAmount" pattern="(?!^0*$)^\d{1,14}$|^[0-9{1,2}(,[0-9{3}){0,4}$|^[0-9{1,3}(,[0-9{3}){0,3}$" tip="日元交易金额不能包含小数" />
+    <rule type="combinationName" pattern="^[a-zA-Z0-9\u4e00-\u9fa5{0,20}$" tip="组合名称最长20个字符或10个中文字符" />
+    <rule type="postscript" pattern="^[\S]{0,50}$" tip="附言信息最长50个字符或25个中文字符" />
+    <rule type="remark" pattern="^[\S]{0,50}$" tip="附加信息最长50个字符或25个中文字符" />    
+    <rule type="fastPaycardNumber" pattern="\d{15,19}$" tip="支付卡号或者支付卡别名格式有误" />
+    <rule type="fastPayNickNameOld" pattern="^([0-9A-Za-z]*[A-Za-z]+[0-9A-Za-z]*){1,20}$" tip="支付卡别名格式有误，请重新输入" />
+    <rule type="fastPayNickNameNew" pattern="^([0-9A-Za-z]*[A-Za-z]+[0-9A-Za-z]*){1,20}$" tip="支付卡别名格式有误，请重新输入" />
+    <rule type="smcode" pattern="^[\s\S]{6}$" tip="手机交易码由6位数字组成" />
+    <rule type="atmPassword" pattern="^[\s\S]{6}$" tip="银行卡密码格式有误，应为6位数字" />
+    <rule type="mobileL4" pattern="^\d{4}$" tip="手机号后四位由4位数字组成" />
+    <rule type="cvv2Value" pattern="^[\s\S]{3}$" tip="信用卡签名栏末三位数字格式有误，应为三位数字" />
+    <rule type="expDate" pattern="^\d{4}$" tip="请选择信用卡有效期" />
+    <rule type="payLimite" pattern="^\d{1,10}$" tip="交易限额无效" />
+    <rule type="loginNickName" pattern="^\w{1,20}$" tip="账号别名由数字、字母组成，长度不超过20个字符" />
+
+    <rule type="cardNumberNew" pattern="^\d{15,19}$" tip="银行卡号由15-19位数字组成" />
+    
+    //中银通
+    <rule type="mobileTrue" pattern="^[0-9]{11}$" tip="请输入11位手机号" />
+    <rule type="mobile1" pattern="^1\d{10}$" tip="手机号首位为1" />
+    <rule type="mobile2" pattern="^\d{6}$" tip="请输入6位短信验证码" />
+    <rule type="payment" pattern="^\d{6}$" tip="支付密码为6位数字" />
+    <rule type="payment1" pattern="^\d{6}$" tip="请输入支付密码（6位数字）" />
+    <rule type="paymentPwd" pattern="^\d{6}$" tip="当前支付密码为6位数字" />
+    <rule type="paymentPwd1" pattern="^\d{6}$" tip="新支付密码为6位数字" />
+    <rule type="paymentPwd2" pattern="^\d{6}$" tip="确认新支付密码为6位数字" />
+    <rule type="mobile3" pattern="^\d{11}$" tip="手机号为11位数字" />
+    <rule type="code" pattern="^\w{8,20}$" tip="密码由长度为8-20位由数字、字母、下划线组成" />
+    <rule type="loginName" pattern="^\W{6,20}$" tip="用户名长度为6-20位由数字、字母、下划线组成" />
+
+    <rule type="paymentMoney" pattern="^(((?!^0*(\.0{1,2})?$)^\d{1,3}(\.\d{1,2})?$)|1000)$" tip="转账金额最大6位（小数点前最多4位数字、小数点后最多2位数字）由大于0的数据组成" />
+    <rule type="bewsRemarking" pattern="^[\S]{0,60}$" tip="输入的备忘信息格式有误，应不超过60位英文字符（30位中文字符）" />
+
+
+</rules>

@@ -1,0 +1,118 @@
+//
+//  GoodStore.h
+//  FamousGradeStreet
+//
+//  Created by FZHONGLI on 14-11-21.
+//  Copyright (c) 2014年 JiangLin. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface GoodStore : NSObject
+//good_name  shop_name dis_price favorite_number
+//width height  first_img  avatar user_name concerned_number  good_id
+@property (nonatomic, copy)NSString *width;
+@property (nonatomic, copy)NSString *height;
+@property (nonatomic, copy)NSString *firstImg;
+@property (nonatomic, copy)NSString *goodName;
+@property (nonatomic, copy)NSString *shopName;
+@property (nonatomic, copy)NSString *disPrice;
+@property (nonatomic, copy)NSString *favoriteNumber;
+@property (nonatomic, copy)NSString *avatar;
+@property (nonatomic, copy)NSString *userName;
+@property (nonatomic, copy)NSString *concernedNumber;
+@property (nonatomic, copy)NSString *goodId;
+@property (nonatomic, copy)NSString *shopId;
+
+// lng lat shop_address created
+@property (nonatomic, copy)NSString *lng;
+@property (nonatomic, copy)NSString *lat;
+@property (nonatomic, copy)NSString *shopAddress;
+@property (nonatomic, copy)NSString *created;
+
+// shop_img
+@property (nonatomic, retain)NSArray *shopImgs;
+
+- (id)initWhithDictionary:(NSDictionary *)dict;
+
+@end
+
+
+/*result": {
+ "good_id": "12728",
+ "good_name": "迪士尼男童鞋",
+ "shop_id": "3048",
+ "shop_name": "巴黎春天五角场店特卖场",
+ "user_id": "3107",
+ "user_name": "筱雅",
+ "good_status": "0",
+ "reason": "",
+ "org_price": "0.00",
+ "dis_price": "96.00",
+ "is_top": "0",
+ "is_auth": "0",
+ "is_del": "0",
+ "favorite_number": "1",
+ "concerned_number": "0",
+ "clicks": "85",
+ "created": "2014.11.21",
+ "updated": "0",
+ "brand_id": "0",
+ "store_id": "30",
+ "region_id": "4",
+ "circle_id": "33",
+ "market_id": "0",
+ "sequence": "999999",
+ "city": "sh",
+ "previous": "http://buy.mplife.com/api/goods/good-detail/gid/12729",
+ "next": "http://buy.mplife.com/api/goods/good-detail/gid/12727",
+ "img": [
+ {
+ "good_img_id": "14091",
+ "img_detail_url": "http://img5.mplife.com/buy/good/640/2014/11/21/1416538180843573402.jpg",
+ "width": 276,
+ "height": 356
+ }
+ ],
+ "avatar": "http://img3.mpimg.cn/avatars/upload/2014/4/3/f7512a2f-0eed-4147-a04e-010970c3fc42.jpg",
+ "shop_address": "淞沪路1号7F",
+ "lng": "121.514481",
+ "lat": "31.300732",
+ "shop_img": [
+ {
+ "good_id": "12731",
+ "good_name": "迪士尼男童鞋",
+ "shop_id": "3048",
+ "shop_name": "巴黎春天五角场店特卖场",
+ "user_id": "3107",
+ "user_name": "筱雅",
+ "org_price": "0.00",
+ "dis_price": "135.00",
+ "concerned_number": "0",
+ "favorite_number": "0",
+ "is_auth": "0",
+ "first_img": "http://img5.mplife.com/buy/good/640/2014/11/21/1416538347543259864.jpg",
+ "width": 407,
+ "height": 486,
+ "img_num": "1"
+ },*/
+
+/*"shop_img": [
+ {
+ "good_id": "12067",
+ "good_name": "PTR精华液",
+ "shop_id": "162",
+ "shop_name": "丝芙兰月星环球港店",
+ "user_id": "986",
+ "user_name": "悠然黄昏",
+ "org_price": "1380.00",
+ "dis_price": "1380.00",
+ "concerned_number": "1",
+ "favorite_number": "1",
+ "is_auth": "0",
+ "first_img": "http://img5.mplife.com/buy/good/640/2014/10/31/1414688201063673.jpg",
+ "width": 479,
+ "height": 640,
+ "img_num": "1"
+ },*/
+
